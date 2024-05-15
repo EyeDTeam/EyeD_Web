@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  color: black;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+  gap: 20px;
+  color: black;
+}
+
+.rightScreen,
+.leftScreen {
+  flex: 1;
+  padding: 1rem;
+  margin: 10px;
+  min-height: 800px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input,
+select,
+textarea {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: lightgrey;
+}
+
+.edit-delete-btn-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+.edit-button, .delete-button {
+  margin: 0 5px; 
+  padding: 5px 10px; 
+  font-weight: bold; 
+  width:80px;
+}
+
+.generate-qr-btn{
+  background-color: green;
+  color: white;
+}
+
+.qr-code-container{
+  padding: 2rem;
+  display:flex; 
+  text-align: center;
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  .edit-delete-btn-container {
+    flex-direction: column; 
+  }
+  .edit-button, .delete-button {
+    width: 100%; 
+    margin-bottom: 5px; 
+  }
+}
+
