@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import { MedicineCardProps } from "../../hooks/useMedicineState";
+import React, { useState, useEffect } from 'react';
+import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
+import { MedicineCardProps } from '../../hooks/useMedicineState';
 
 interface EditDialogProps {
   isOpen: boolean;
@@ -20,12 +20,12 @@ const EditDialog: React.FC<EditDialogProps> = ({
   const [editedMedicine, setEditedMedicine] = useState<MedicineCardProps>(
     medicine || {
       id: 0,
-      uniqueKey: "",
-      medicineName: "",
+      uniqueKey: '',
+      name: '',
       eyeSelection: { left: false, right: false, both: false },
-      frequency: "",
-      capColor: "",
-      specialInstruction: "",
+      frequency: '',
+      capColor: '',
+      specialInstruction: '',
     }
   );
 
@@ -33,12 +33,12 @@ const EditDialog: React.FC<EditDialogProps> = ({
     setEditedMedicine(
       medicine || {
         id: 0,
-        uniqueKey: "",
-        medicineName: "",
+        uniqueKey: '',
+        name: '',
         eyeSelection: { left: false, right: false, both: false },
-        frequency: "",
-        capColor: "",
-        specialInstruction: "",
+        frequency: '',
+        capColor: '',
+        specialInstruction: '',
       }
     );
   }, [medicine]);
@@ -65,9 +65,9 @@ const EditDialog: React.FC<EditDialogProps> = ({
     setEditedMedicine((prev) => ({
       ...prev,
       eyeSelection: {
-        left: value === "left",
-        right: value === "right",
-        both: value === "both",
+        left: value === 'left',
+        right: value === 'right',
+        both: value === 'both',
       },
     }));
   };
@@ -76,30 +76,30 @@ const EditDialog: React.FC<EditDialogProps> = ({
     <Dialog
       open={isOpen}
       onClose={() => setIsOpen(false)}
-      className="relative z-50"
+      className='relative z-50'
     >
-      <div className="fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-75">
-        <DialogPanel className="w-full max-w-7xl mx-auto p-12 space-y-4 border bg-white text-black rounded">
-          <div className="flex items-center justify-between">
-            <DialogTitle className="font-bold">Edit Prescription</DialogTitle>
+      <div className='fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-75'>
+        <DialogPanel className='w-full max-w-7xl mx-auto p-12 space-y-4 border bg-white text-black rounded'>
+          <div className='flex items-center justify-between'>
+            <DialogTitle className='font-bold'>Edit Prescription</DialogTitle>
             <button onClick={() => setIsOpen(false)}>X</button>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 space-y-2">
-            <div className="flex flex-col">
+          <div className='grid grid-cols-1 gap-4 space-y-2'>
+            <div className='flex flex-col'>
               <label>Medicine Name:</label>
               <input
-                type="text"
-                name="medicineName"
-                value={editedMedicine.medicineName}
+                type='text'
+                name='medicineName'
+                value={editedMedicine.name}
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-col">
+            <div className='flex flex-col'>
               <label>Frequency:</label>
               <input
-                type="text"
-                name="frequency"
+                type='text'
+                name='frequency'
                 value={editedMedicine.frequency}
                 onChange={handleChange}
               />
@@ -113,35 +113,35 @@ const EditDialog: React.FC<EditDialogProps> = ({
                 onChange={handleChange}
               />
             </div> */}
-            <div className="flex flex-col">
+            <div className='flex flex-col'>
               <label>Instructions:</label>
               <textarea
-                name="specialInstruction"
+                name='specialInstruction'
                 value={editedMedicine.specialInstruction}
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-col">
+            <div className='flex flex-col'>
               <label>Eye Selection:</label>
               <select
-                name="eyeSelection"
+                name='eyeSelection'
                 value={
                   editedMedicine.eyeSelection.left
-                    ? "left"
+                    ? 'left'
                     : editedMedicine.eyeSelection.right
-                    ? "right"
-                    : "both"
+                    ? 'right'
+                    : 'both'
                 }
                 onChange={handleEyeSelectionChange}
               >
-                <option value="left">Left</option>
-                <option value="right">Right</option>
-                <option value="both">Both</option>
+                <option value='left'>Left</option>
+                <option value='right'>Right</option>
+                <option value='both'>Both</option>
               </select>
             </div>
-            <div className="flex items-center justify-between gap-4">
+            <div className='flex items-center justify-between gap-4'>
               <button onClick={handleSave}>Save</button>
-              <button onClick={onDelete} className="bg-red-500">
+              <button onClick={onDelete} className='bg-red-500'>
                 Delete
               </button>
             </div>
