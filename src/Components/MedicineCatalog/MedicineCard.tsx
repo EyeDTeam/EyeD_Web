@@ -88,7 +88,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
       {mode === 'review' ? (
         <>
           <h4>
-            {medicine.name} (ID: {medicine.id})
+            {medicine.medicineName} (ID: {medicine.id})
           </h4>
           {medicine.eyeSelection &&
             (medicine.eyeSelection.left ||
@@ -108,7 +108,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
         </>
       ) : (
         <>
-          <h4>{medicine.name}</h4>
+          <h4>{medicine.medicineName}</h4>
           <div className='eye-radio-btn'>
             <label>Eyes:</label>
             <label>

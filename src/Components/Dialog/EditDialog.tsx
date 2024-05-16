@@ -21,7 +21,7 @@ const EditDialog: React.FC<EditDialogProps> = ({
     medicine || {
       id: 0,
       uniqueKey: '',
-      name: '',
+      medicineName: '',
       eyeSelection: { left: false, right: false, both: false },
       frequency: '',
       capColor: '',
@@ -34,7 +34,7 @@ const EditDialog: React.FC<EditDialogProps> = ({
       medicine || {
         id: 0,
         uniqueKey: '',
-        name: '',
+        medicineName: '',
         eyeSelection: { left: false, right: false, both: false },
         frequency: '',
         capColor: '',
@@ -91,7 +91,7 @@ const EditDialog: React.FC<EditDialogProps> = ({
               <input
                 type='text'
                 name='medicineName'
-                value={editedMedicine.name}
+                value={editedMedicine.medicineName}
                 onChange={handleChange}
               />
             </div>
