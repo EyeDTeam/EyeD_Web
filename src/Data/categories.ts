@@ -12,7 +12,7 @@ export const categories: CategoryMedicines[] = [
       {
         id: 1,
         uniqueKey: "1",
-        name: "Xalatan (latanoprost)",
+        medicineName: "Xalatan (latanoprost)",
         eyeSelection: { left: false, right: false, both: false },
         frequency: "Once a day before bedtime",
         capColor: "teal",
@@ -21,7 +21,7 @@ export const categories: CategoryMedicines[] = [
       {
         id: 2,
         uniqueKey: "2",
-        name: "Timolol",
+        medicineName: "Timolol",
         eyeSelection: { left: false, right: false, both: false },
         frequency: "Once a day before bedtime",
         capColor: "yellow",
@@ -30,7 +30,7 @@ export const categories: CategoryMedicines[] = [
       {
         id: 3,
         uniqueKey: "3",
-        name: "Brimonidine",
+        medicineName: "Brimonidine",
         eyeSelection: { left: false, right: false, both: false },
         frequency: "Once a day before bedtime",
         capColor: "Purple",
@@ -39,7 +39,7 @@ export const categories: CategoryMedicines[] = [
       {
         id: 4,
         uniqueKey: "4",
-        name: "Dorzolamide/Timolol (Cospot)",
+        medicineName: "Dorzolamide/Timolol (Cospot)",
         eyeSelection: { left: false, right: false, both: false },
         frequency: "Once a day before bedtime",
         capColor: "Dark BLue",
@@ -53,7 +53,7 @@ export const categories: CategoryMedicines[] = [
       {
         id: 5,
         uniqueKey: "5",
-        name: "Timolol",
+        medicineName: "Timolol",
         eyeSelection: { left: false, right: false, both: false },
         frequency: "Once a day before bedtime",
         capColor: "red",
@@ -67,7 +67,7 @@ export const categories: CategoryMedicines[] = [
       {
         id: 6,
         uniqueKey: "6",
-        name: "Timolol",
+        medicineName: "Timolol",
         eyeSelection: { left: false, right: false, both: false },
         frequency: "Once a day before bedtime",
         capColor: "red",
@@ -81,7 +81,7 @@ export const categories: CategoryMedicines[] = [
       {
         id: 7,
         uniqueKey: "7",
-        name: "Timolol",
+        medicineName: "Timolol",
         eyeSelection: { left: false, right: false, both: false },
         frequency: "Once a day before bedtime",
         capColor: "red",

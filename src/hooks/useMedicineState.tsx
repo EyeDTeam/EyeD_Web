@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export interface MedicineCardProps {
   id: number;
   uniqueKey: string;
-  name: string;
+  medicineName: string;
   eyeSelection: EyeSelection;
   frequency: string;
   capColor: string;
