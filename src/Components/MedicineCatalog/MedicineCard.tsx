@@ -55,7 +55,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
   };
 
   const handleInstructionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setInstruction(event.target.value);
     if (onUpdate) {
@@ -82,7 +82,11 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
         });
     }
   };
-
+  const renderTaperSchedule = () => {
+    return instruction.split('\n').map((line, index) => (
+      <div key={index}>{line}</div>
+    ));
+  };
   return (
     <div className='medicine-card'>
       {/* edit is the review on the selected medicine */}
@@ -90,18 +94,14 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
         <>
           <h4 className='selected-med-card-name'>{medicine.medicineName}</h4>
           {medicine.eyeSelection && (
-            <p>Eyes: {getEyeSelectionText(medicine.eyeSelection)}</p>
+            <p><strong>Eyes: </strong>{getEyeSelectionText(medicine.eyeSelection)}</p>
           )}
           {/* <p>Cap Color: {medicine.capColor}</p> */}
 
-          <p>Frequency: {medicine.frequency}</p>
+          <p><strong>Frequency: </strong>{medicine.frequency}</p>
           <div>
-            Special Instruction:
-            {medicine.specialInstruction
-              .split(/, /)
-              .map((instruction, index) => (
-                <p key={index}>{instruction}</p>
-              ))}
+            <strong>Special Instruction:</strong>
+            {renderTaperSchedule()}
           </div>
         </>
       ) : (
@@ -147,8 +147,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
           </div>
           <div className='edit-instruction'>
             <label>Special Instruction: </label>
-            <input
-              type='text'
+            <textarea className='instruction-text-area'
               value={instruction}
               onChange={handleInstructionChange}
             />

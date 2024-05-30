@@ -17,7 +17,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/day",
         capColor: "",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
       {
         id: 2,
@@ -27,7 +27,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day",
         capColor: "",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
       {
         id: 3,
@@ -37,7 +37,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day",
         capColor: "",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
       {
         id: 4,
@@ -47,7 +47,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day",
         capColor: "",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
       {
         id: 5,
@@ -57,7 +57,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day",
         capColor: "",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
       {
         id: 6,
@@ -67,7 +67,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day",
         capColor: "",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
     ],
   },
@@ -82,7 +82,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "Every X hours (X/Day)",
         capColor: "N/A",
-        specialInstruction:"Taper Schedule: X/day for 1 week (_/_/_), X/day for 1 week (_/_/_), X/day for 1 week (_/_/_), X/day for 1 week (_/_/_), Stop(Date:_/_/_), Continue: X/day until next visit",
+        specialInstruction:"Taper Schedule: \nX/day for 1 week (_/_/_),\nX/day for 1 week (_/_/_),\nX/day for 1 week (_/_/_),\nX/day for 1 week (_/_/_),\nStop(Date:_/_/_),\nContinue: X/day until next visit",
       },
       {
         id: 8,
@@ -117,7 +117,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day",
         capColor: "N/A",
-        specialInstruction: "Taper Schedule: X/day for 1 week (_/_/_), X/day for 1 week (_/_/_), X/day for 1 week (_/_/_), X/day for 1 week (_/_/_), Stop (Date:_/_/_), Continue: X/day until next visit",
+        specialInstruction: "Taper Schedule: \nX/day for 1 week (_/_/_),\nX/day for 1 week (_/_/_),\nX/day for 1 week (_/_/_),\nX/day for 1 week (_/_/_),\nStop(Date:_/_/_),\nContinue: X/day until next visit",
       },
       {
         id: 11,
@@ -127,7 +127,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day",
         capColor: "N/A",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
       {
         id: 12,
@@ -137,7 +137,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day",
         capColor: "N/A",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
     ],
   },
@@ -152,7 +152,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "Every X hour (X/Day)",
         capColor: "N/A",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
       {
         id: 14,
@@ -162,7 +162,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "Every X hour (X/Day)",
         capColor: "N/A",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
       {
         id: 15,
@@ -172,7 +172,7 @@ export const categories: CategoryMedicines[] = [
         //frequencyOptions: [''],
         frequency: "X/Day Before Bed",
         capColor: "N/A",
-        specialInstruction: "",
+        specialInstruction: "N/A",
       },
     ],
   },
