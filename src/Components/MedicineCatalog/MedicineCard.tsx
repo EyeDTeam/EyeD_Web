@@ -64,6 +64,16 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
   };
 
   const handleSubmit = () => {
+    if (!selectEye.left && !selectEye.right && !selectEye.both) {
+      alert(
+        'Please select an eye (Left, Right, or Both) before adding the medicine.'
+      );
+      return;
+    }
+    if (editFreq.includes('X')) {
+      alert('Please specify how frequency the medicine need to be used.');
+      return; // Stop the function if no selection is made
+    }
     if (mode === 'add') {
       onSelect({
         ...medicine,
@@ -83,9 +93,9 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
     }
   };
   const renderTaperSchedule = () => {
-    return instruction.split('\n').map((line, index) => (
-      <div key={index}>{line}</div>
-    ));
+    return instruction
+      .split('\n')
+      .map((line, index) => <div key={index}>{line}</div>);
   };
   return (
     <div className='medicine-card'>
@@ -94,11 +104,17 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
         <>
           <h4 className='selected-med-card-name'>{medicine.medicineName}</h4>
           {medicine.eyeSelection && (
-            <p><strong>Eyes: </strong>{getEyeSelectionText(medicine.eyeSelection)}</p>
+            <p>
+              <strong>Eyes: </strong>
+              {getEyeSelectionText(medicine.eyeSelection)}
+            </p>
           )}
           {/* <p>Cap Color: {medicine.capColor}</p> */}
 
-          <p><strong>Frequency: </strong>{medicine.frequency}</p>
+          <p>
+            <strong>Frequency: </strong>
+            {medicine.frequency}
+          </p>
           <div>
             <strong>Special Instruction:</strong>
             {renderTaperSchedule()}
@@ -147,7 +163,8 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
           </div>
           <div className='edit-instruction'>
             <label>Special Instruction: </label>
-            <textarea className='instruction-text-area'
+            <textarea
+              className='instruction-text-area'
               value={instruction}
               onChange={handleInstructionChange}
             />
