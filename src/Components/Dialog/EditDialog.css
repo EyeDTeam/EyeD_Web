@@ -1,0 +1,19 @@
+.edit-prescription-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;;
+}
+.edit-prescription-title{
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: inline;
+    
+}
+.save-button{
+    color: black;
+    background-color: #63bf3c;
+}
+.edit-prescription-close-btn{
+    color: white;
+    background-color: black;
+}

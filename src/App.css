@@ -4,18 +4,15 @@
 
 #root {
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
-  width: 100%;
-  box-sizing: border-box;
+  width: 90%;
   background-color: white;
   color: black;
 }
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 20px;
   gap: 20px;
   color: black;
 }
@@ -23,11 +20,10 @@
 .rightScreen,
 .leftScreen {
   flex: 1;
-  padding: 1rem;
-  margin: 10px;
+  padding: 2rem;
   min-height: 800px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 input,
@@ -64,7 +60,7 @@ textarea {
   text-align: center;
   justify-content: center;
 }
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .edit-delete-btn-container {
     flex-direction: column; 
   }
@@ -72,5 +68,5 @@ textarea {
     width: 100%; 
     margin-bottom: 5px; 
   }
-}
+} */
 

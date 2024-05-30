@@ -7,7 +7,8 @@ export interface MedicineCardProps {
   uniqueKey: string;
   medicineName: string;
   eyeSelection: EyeSelection;
-  frequency: string;
+  //frequencyOptions: string[]; // Array of frequency options
+  frequency: string;  // Currently selected frequency
   capColor: string;
   specialInstruction: string;
 }

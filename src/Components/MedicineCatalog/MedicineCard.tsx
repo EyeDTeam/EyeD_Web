@@ -37,6 +37,14 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
     }
   };
 
+  // Helper function to format eye selection text
+  const getEyeSelectionText = (eyeSelection: EyeSelection) => {
+    if (eyeSelection.both) return 'Both';
+    if (eyeSelection.left) return 'Left';
+    if (eyeSelection.right) return 'Right';
+    return 'None';
+  };
+
   const handleFrequencyChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -76,67 +84,57 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
   };
 
   return (
-    <div
-      className='medicine-card'
-      style={{
-        borderRadius: '8px',
-        padding: '20px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-      }}
-    >
+    <div className='medicine-card'>
       {/* edit is the review on the selected medicine */}
       {mode === 'review' ? (
         <>
-          <h4>
-            {medicine.medicineName} (ID: {medicine.id})
-          </h4>
-          {medicine.eyeSelection &&
-            (medicine.eyeSelection.left ||
-              medicine.eyeSelection.right ||
-              medicine.eyeSelection.both) && (
-              <p>
-                Eyes:
-                {(medicine.eyeSelection.left && 'Left') ||
-                  (medicine.eyeSelection.right && 'Right') ||
-                  (medicine.eyeSelection.both && 'Both')}
-              </p>
-            )}
+          <h4 className='selected-med-card-name'>{medicine.medicineName}</h4>
+          {medicine.eyeSelection && (
+            <p>Eyes: {getEyeSelectionText(medicine.eyeSelection)}</p>
+          )}
           {/* <p>Cap Color: {medicine.capColor}</p> */}
 
           <p>Frequency: {medicine.frequency}</p>
-          <p>Instruction: {medicine.specialInstruction}</p>
+          <div>
+            Special Instruction:
+            {medicine.specialInstruction
+              .split(/, /)
+              .map((instruction, index) => (
+                <p key={index}>{instruction}</p>
+              ))}
+          </div>
         </>
       ) : (
         <>
-          <h4>{medicine.medicineName}</h4>
+          <h4 className='medicine-med-card-name'>{medicine.medicineName}</h4>
           <div className='eye-radio-btn'>
-            <label>Eyes:</label>
+            <label>Eyes: </label>
             <label>
+              Left
               <input
                 type='radio'
                 name='left'
                 checked={selectEye.left}
                 onChange={handleRadioChange}
               />{' '}
-              Left
             </label>
             <label>
+              Right
               <input
                 type='radio'
                 name='right'
                 checked={selectEye.right}
                 onChange={handleRadioChange}
               />{' '}
-              Right
             </label>
             <label>
+              Both
               <input
                 type='radio'
                 name='both'
                 checked={selectEye.both}
                 onChange={handleRadioChange}
               />{' '}
-              Both
             </label>
           </div>
           <div className='freq-radio-btn'>
@@ -148,10 +146,9 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
             />
           </div>
           <div className='edit-instruction'>
-            <label>Instruction: </label>
+            <label>Special Instruction: </label>
             <input
               type='text'
-              placeholder='NA'
               value={instruction}
               onChange={handleInstructionChange}
             />
@@ -160,7 +157,11 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
       )}
 
       {mode === 'add' && (
-        <button type='button' onClick={handleSubmit} style={{ backgroundColor: '#29C5F6', color: 'white' }}>
+        <button
+          type='button'
+          onClick={handleSubmit}
+          style={{ backgroundColor: '#29C5F6', color: 'white' }}
+        >
           Add Medicine
         </button>
       )}

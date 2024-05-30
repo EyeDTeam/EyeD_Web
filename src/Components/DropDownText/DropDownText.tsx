@@ -17,7 +17,7 @@ const people = [
   { id: 3, name: 'Tanya Fox' },
   { id: 4, name: 'Arlene Mccoy' },
   { id: 5, name: 'Devon Webb' },
-];
+];2
 
 export default function ComboBox() {
   const [query, setQuery] = useState('');

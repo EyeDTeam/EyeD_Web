@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { MedicineCardProps } from '../../hooks/useMedicineState';
-
+import "./EditDialog.css"
 interface EditDialogProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
@@ -80,9 +80,10 @@ const EditDialog: React.FC<EditDialogProps> = ({
     >
       <div className='fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-75'>
         <DialogPanel className='w-full max-w-7xl mx-auto p-12 space-y-4 border bg-white text-black rounded'>
-          <div className='flex items-center justify-between'>
-            <DialogTitle className='font-bold'>Edit Prescription</DialogTitle>
-            <button onClick={() => setIsOpen(false)}>X</button>
+          {/* <div className='flex items-center justify-between'> */}
+          <div className='edit-prescription-header'>
+            <DialogTitle className='edit-prescription-title'>Edit Prescription</DialogTitle>
+            <button className='edit-prescription-close-btn' onClick={() => setIsOpen(false)}>X</button>
           </div>
 
           <div className='grid grid-cols-1 gap-4 space-y-2'>
@@ -140,10 +141,10 @@ const EditDialog: React.FC<EditDialogProps> = ({
               </select>
             </div>
             <div className='flex items-center justify-between gap-4'>
-              <button onClick={handleSave}>Save</button>
               <button onClick={onDelete} className='bg-red-500'>
                 Delete
               </button>
+              <button className = "save-button" onClick={handleSave}>Save</button>
             </div>
           </div>
         </DialogPanel>

@@ -28,4 +28,8 @@
   
   .medicine-card .edit-instruction input[type="text"]{
     width: 100%; 
+    margin: 0;
+  }
+  .medicine-card .edit-instruction{
+    padding-bottom: 10px;
   }

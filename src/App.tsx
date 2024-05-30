@@ -13,9 +13,8 @@ const App: React.FC = () => {
   const [showQR, setShowQR] = useState(false);
   const [qrData, setQRData] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [currentMedicine, setCurrentMedicine] = useState<
-    MedicineCardProps | undefined
-  >(undefined);
+  const [currentMedicine, setCurrentMedicine] =
+    useState<MedicineCardProps | null>(null);
 
   const {
     selectedMedicines,
@@ -39,56 +38,56 @@ const App: React.FC = () => {
       <NavBar />
       <div className='container'>
         <div className='leftScreen'>
-          <PrescriptionContainer>
-            {/* <pre>
-              SelectedMedicine: {JSON.stringify(selectedMedicines, null, 2)}
-            </pre> */}
-            {selectedMedicines.map((medicine) => (
-              <div key={medicine.uniqueKey} className='medicine-entry'>
-                <MedicineCard
-                  key={medicine.uniqueKey}
-                  medicine={medicine}
-                  onSelect={() =>
-                    handleUpdateMedicine(medicine.uniqueKey, { ...medicine })
-                  }
-                  onUpdate={(updatedFields) =>
-                    handleUpdateMedicine(medicine.uniqueKey, updatedFields)
-                  }
-                  mode='review'
-                />
-                {/* <pre>Medicine: {JSON.stringify(medicine, null, 2)}</pre> */}
-                <div className='edit-delete-btn-container'>
-                  <button
-                    onClick={() => {
-                      setCurrentMedicine(medicine);
-                      setIsOpen(true);
-                    }}
-                    className='edit-button'
-                    style={{ backgroundColor: '#29C5F6', color: 'white' }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDeleteMedicine(medicine.uniqueKey)}
-                    className='delete-button'
-                    style={{ backgroundColor: 'red', color: 'white' }}
-                  >
-                    Delete
-                  </button>
+          {Object.keys(selectedMedicines).length === 0 ? (
+            <p>No Medicine Selected</p>
+          ) : (
+            <PrescriptionContainer>
+              {selectedMedicines.map((medicine) => (
+                <div key={medicine.uniqueKey} className='medicine-entry'>
+                  <MedicineCard
+                    key={medicine.uniqueKey}
+                    medicine={medicine}
+                    onSelect={() =>
+                      handleUpdateMedicine(medicine.uniqueKey, { ...medicine })
+                    }
+                    onUpdate={(updatedFields) =>
+                      handleUpdateMedicine(medicine.uniqueKey, updatedFields)
+                    }
+                    mode='review'
+                  />
+                  <div className='edit-delete-btn-container'>
+                    <button
+                      onClick={() => {
+                        setCurrentMedicine(medicine);
+                        setIsOpen(true);
+                      }}
+                      className='edit-button'
+                      style={{ backgroundColor: '#29C5F6', color: 'white' }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDeleteMedicine(medicine.uniqueKey)}
+                      className='delete-button'
+                      style={{ backgroundColor: 'red', color: 'white' }}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-            {selectedMedicines.length > 0 && (
-              <button onClick={generateQRCode} className='generate-qr-btn'>
-                Generate QR Code
-              </button>
-            )}
-            {showQR && qrData && (
-              <div className='qr-code-container'>
-                <QRCode value={qrData} size={256} />
-              </div>
-            )}
-          </PrescriptionContainer>
+              ))}
+              {selectedMedicines.length > 0 && (
+                <button onClick={generateQRCode} className='generate-qr-btn'>
+                  Generate QR Code
+                </button>
+              )}
+              {showQR && qrData && (
+                <div className='qr-code-container'>
+                  <QRCode value={qrData} size={256} />
+                </div>
+              )}
+            </PrescriptionContainer>
+          )}
         </div>
         <div className='rightScreen'>
           <MedicineList onSelectMedicine={handleAddMedicine} />
@@ -96,7 +95,7 @@ const App: React.FC = () => {
         <EditDialog
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-          medicine={currentMedicine!} // Assumes currentMedicine is not null
+          medicine={currentMedicine!}
           onUpdateMedicine={(updatedMedicine) => {
             if (currentMedicine) {
               handleUpdateMedicine(currentMedicine.uniqueKey, updatedMedicine);
