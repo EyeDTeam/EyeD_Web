@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   //Deploy on GitHub
-  base: "/PrescriptionWebPage/" //Repo Name
+  base: '/PrescriptionWebPage/' //Repo Name
 })
