@@ -15,6 +15,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
     medicine.eyeSelection
   );
   const [editFreq, setEditFreq] = useState<string>(medicine.frequency);
+  // if the special instruction is N/A, initialize as empty so that the placeholder shows
   const [instruction, setInstruction] = useState<string>(
     medicine.specialInstruction
   );
@@ -22,7 +23,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
   useEffect(() => {
     setEyeSelection(medicine.eyeSelection);
     setEditFreq(medicine.frequency);
-    setInstruction(medicine.specialInstruction);
+    setInstruction(medicine.specialInstruction === "N/A" ? "" : medicine.specialInstruction);
   }, [medicine]);
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +56,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
   };
 
   const handleInstructionChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setInstruction(event.target.value);
     if (onUpdate) {
@@ -79,7 +80,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
         ...medicine,
         eyeSelection: selectEye,
         frequency: editFreq,
-        specialInstruction: instruction,
+        specialInstruction: instruction === "" ? "N/A" : instruction,
         uniqueKey: medicine.uniqueKey || '',
       });
     } else {
@@ -93,7 +94,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
     }
   };
   const renderTaperSchedule = () => {
-    return instruction
+    return instruction === "" ? "N/A" : instruction
       .split('\n')
       .map((line, index) => <div key={index}>{line}</div>);
   };
@@ -116,72 +117,90 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
             {medicine.frequency}
           </p>
           <div>
-            <strong>Special Instruction:</strong>
+            <strong>Special Instruction: </strong>
             {renderTaperSchedule()}
           </div>
         </>
       ) : (
         <>
           <h4 className='medicine-med-card-name'>{medicine.medicineName}</h4>
-          <div className='eye-radio-btn'>
-            <label>Eyes: </label>
-            <label>
-              Left
-              <input
-                type='radio'
-                name='left'
-                checked={selectEye.left}
-                onChange={handleRadioChange}
-              />{' '}
-            </label>
-            <label>
-              Right
-              <input
-                type='radio'
-                name='right'
-                checked={selectEye.right}
-                onChange={handleRadioChange}
-              />{' '}
-            </label>
-            <label>
-              Both
-              <input
-                type='radio'
-                name='both'
-                checked={selectEye.both}
-                onChange={handleRadioChange}
-              />{' '}
-            </label>
+          <hr className="border-0 border-t border-gray-300 my-[10px] mb-2" />
+          <div className="grid grid-cols-[150px_1fr] items-center mb-[10px]">
+            <div className="text-left font-bold">
+              <label>Eyes:</label>
+            </div>
+            <div className="justify-self-start text-left">
+              <label className="mr-[15px] inline-flex items-center cursor-pointer hover:text-[#7b7b7b]">
+                <input
+                    type='radio'
+                    name='left'
+                    checked={selectEye.left}
+                    onChange={handleRadioChange}
+                />
+                Left
+              </label>
+              <label className="mr-[15px] inline-flex items-center cursor-pointer hover:text-[#7b7b7b]">
+                <input
+                    type='radio'
+                    name='right'
+                    checked={selectEye.right}
+                    onChange={handleRadioChange}
+                />
+                Right
+              </label>
+              <label className="mr-[15px] inline-flex items-center cursor-pointer hover:text-[#7b7b7b]">
+                <input
+                    type='radio'
+                    name='both'
+                    checked={selectEye.both}
+                    onChange={handleRadioChange}
+                />
+                Both
+              </label>
+            </div>
           </div>
-          <div className='freq-radio-btn'>
-            <label>Frequency: </label>
-            <input
-              type='text'
-              value={editFreq}
-              onChange={handleFrequencyChange}
-            />
+          <hr className="border-0 border-t border-gray-300 my-[10px]" />
+          <div className="grid grid-cols-[150px_1fr] items-center mb-[10px]">
+            <div className="text-left font-bold">
+              <label>Frequency:</label>
+            </div>
+            <div className="text-left">
+              <input
+                  type='text'
+                  value={editFreq}
+                  onChange={handleFrequencyChange}
+                  className="w-full box-border"
+              />
+            </div>
           </div>
-          <div className='edit-instruction'>
-            <label>Special Instruction: </label>
-            <textarea
-              className='instruction-text-area'
-              value={instruction}
-              onChange={handleInstructionChange}
-            />
+          <hr className="border-0 border-t border-gray-300 my-[10px]" />
+          <div className="grid grid-cols-[150px_1fr] items-center mb-[10px]">
+            <div className="text-left font-bold">
+              <label>Special Instruction:</label>
+            </div>
+            <div className="text-left">
+              <input
+                  type='text'
+                  value={instruction}
+                  placeholder="N/A"
+                  onChange={handleInstructionChange}
+                  className="w-full box-border"
+              />
+            </div>
           </div>
         </>
-      )}
+        )}
 
-      {mode === 'add' && (
-        <button
-          type='button'
-          onClick={handleSubmit}
-          style={{ backgroundColor: '#29C5F6', color: 'white' }}
-        >
-          Add Medicine
-        </button>
-      )}
-    </div>
+        {mode === 'add' && (
+            <button
+                type='button'
+                onClick={handleSubmit}
+                style={{ backgroundColor: '#29C5F6', color: 'white' }}
+            >
+              Add Medicine
+            </button>
+        )}
+      </div>
   );
 };
 
