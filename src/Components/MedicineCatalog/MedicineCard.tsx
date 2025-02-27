@@ -19,12 +19,20 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
   const [instruction, setInstruction] = useState<string>(
     medicine.specialInstruction
   );
+  const [isAddEnabled, setIsAddEnabled] = useState(false);
 
   useEffect(() => {
     setEyeSelection(medicine.eyeSelection);
     setEditFreq(medicine.frequency);
     setInstruction(medicine.specialInstruction === "N/A" ? "" : medicine.specialInstruction);
   }, [medicine]);
+
+  useEffect(() => {
+    const validEyeSelection =
+      selectEye.left || selectEye.right || selectEye.both;
+    const validFrequency = !editFreq.includes('X');
+    setIsAddEnabled(validEyeSelection && validFrequency);
+  }, [selectEye, editFreq]);
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSelection: EyeSelection = {
@@ -130,7 +138,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
               <label>Eyes:</label>
             </div>
             <div className="justify-self-start text-left">
-              <label className="mr-[15px] inline-flex items-center cursor-pointer hover:text-[#7b7b7b]">
+              <label className="mr-2 inline-flex items-center cursor-pointer hover:font-semibold">
                 <input
                     type='radio'
                     name='left'
@@ -139,7 +147,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
                 />
                 Left
               </label>
-              <label className="mr-[15px] inline-flex items-center cursor-pointer hover:text-[#7b7b7b]">
+              <label className="mr-2 inline-flex items-center cursor-pointer hover:font-semibold">
                 <input
                     type='radio'
                     name='right'
@@ -148,7 +156,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
                 />
                 Right
               </label>
-              <label className="mr-[15px] inline-flex items-center cursor-pointer hover:text-[#7b7b7b]">
+              <label className="inline-flex items-center cursor-pointer hover:font-semibold">
                 <input
                     type='radio'
                     name='both'
@@ -191,16 +199,20 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
         </>
         )}
 
-        {mode === 'add' && (
-            <button
-                type='button'
-                onClick={handleSubmit}
-                style={{ backgroundColor: '#29C5F6', color: 'white' }}
-            >
-              Add Medicine
-            </button>
-        )}
-      </div>
+      {mode === 'add' && (
+        <button
+          type='button'
+          onClick={handleSubmit}
+          disabled={!isAddEnabled}
+          style={{
+            backgroundColor: isAddEnabled ? '#0e99c2' : '#cccccc',
+            color: 'white',
+          }}
+        >
+          Add Medicine
+        </button>
+      )}
+    </div>
   );
 };
 
