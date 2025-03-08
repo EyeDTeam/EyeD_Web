@@ -141,7 +141,7 @@ const MedicineCard: FC<ExtendedMedicineCardProps> = ({
         let options: string[] = [];
         switch (tokenName) {
           case 'times':
-            options = Array.from({ length: 10 }, (_, i) =>
+            options = Array.from({ length: 6 }, (_, i) =>
               i === 0 ? "1 time" : `${i + 1} times`
             );
             break;
