@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   //Deploy on GitHub
-  base: "/EyeD_Web", //Repo Name
+  base: "/EyeD_Web/", //Repo Name
 })
